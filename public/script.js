@@ -161,7 +161,9 @@ class BingoGame {
     
     updateDrawnNumbersList(drawnNumbers) {
         this.drawnNumbersDiv.innerHTML = '';
-        drawnNumbers.forEach(number => {
+        // Sort numbers in ascending order before displaying
+        const sortedNumbers = [...drawnNumbers].sort((a, b) => a - b);
+        sortedNumbers.forEach(number => {
             const chip = document.createElement('div');
             chip.className = 'number-chip';
             chip.textContent = number;
