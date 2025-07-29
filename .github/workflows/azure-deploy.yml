@@ -60,5 +60,7 @@ jobs:
         with:
           containerAppName: ${{ env.CONTAINER_APP_NAME }}
           resourceGroup: ${{ env.RESOURCE_GROUP }}
-          imageToDeploy: >-
-            ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          acrName: ${{ env.REGISTRY_LOGIN_SERVER }}
+          acrUsername: ${{ env.REGISTRY_USERNAME }}
+          acrPassword: ${{ env.REGISTRY_PASSWORD }}
+          imageToDeploy: ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
