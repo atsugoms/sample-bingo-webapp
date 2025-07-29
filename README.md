@@ -63,11 +63,23 @@ docker run -p 3000:3000 bingo-webapp
 
 - **デプロイ先**: Azure Container Apps
 - **コンテナレジストリ**: Azure Container Registry
+- **認証方式**: OpenID Connect（OIDC）
 - **トリガー**: `main` ブランチへのプッシュまたはプルリクエスト
 
 ### セットアップ
 
 Azure デプロイのセットアップについては [Azure CI/CD セットアップガイド](docs/AZURE_SETUP.md) を参照してください。
+
+#### 必要なGitHub Secrets
+
+- `AZURE_REGISTRY_LOGIN_SERVER` - Azure Container Registry のログインサーバー
+- `AZURE_REGISTRY_USERNAME` - Azure Container Registry のユーザー名
+- `AZURE_REGISTRY_PASSWORD` - Azure Container Registry のパスワード
+- `AZURE_CONTAINER_APP_NAME` - Azure Container Apps の名前
+- `AZURE_RESOURCE_GROUP` - Azure リソースグループ名
+- `AZURE_CLIENT_ID` - Azure アプリケーションのクライアントID
+- `AZURE_TENANT_ID` - Azure テナントID
+- `AZURE_SUBSCRIPTION_ID` - Azure サブスクリプションID
 
 ## ライセンス
 
