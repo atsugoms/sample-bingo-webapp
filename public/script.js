@@ -40,6 +40,8 @@ class BingoGame {
             if (gameState.isGameStarted) {
                 this.updateUI(gameState);
                 this.showGameSections();
+                this.initializeAllNumbers(gameState.maxNumber);
+                this.updateDrawnNumbersList(gameState.drawnNumbers);
             }
         } catch (error) {
             console.error('Error loading game state:', error);
@@ -75,6 +77,7 @@ class BingoGame {
                 });
                 this.showGameSections();
                 this.drawnNumberSpan.textContent = '-';
+                this.initializeAllNumbers(result.maxNumber);
             } else {
                 this.showMessage(result.error, 'error');
             }
@@ -159,13 +162,24 @@ class BingoGame {
         }
     }
     
-    updateDrawnNumbersList(drawnNumbers) {
+    initializeAllNumbers(maxNumber) {
         this.drawnNumbersDiv.innerHTML = '';
-        drawnNumbers.forEach(number => {
+        for (let i = 1; i <= maxNumber; i++) {
             const chip = document.createElement('div');
-            chip.className = 'number-chip';
-            chip.textContent = number;
+            chip.className = 'number-chip undrawn';
+            chip.textContent = i;
+            chip.id = `number-${i}`;
             this.drawnNumbersDiv.appendChild(chip);
+        }
+    }
+
+    updateDrawnNumbersList(drawnNumbers) {
+        drawnNumbers.forEach(number => {
+            const chip = document.getElementById(`number-${number}`);
+            if (chip && chip.classList.contains('undrawn')) {
+                chip.classList.remove('undrawn');
+                chip.classList.add('drawn');
+            }
         });
     }
     
