@@ -57,6 +57,18 @@ docker run -p 3000:3000 bingo-webapp
 4. 抽選済み数字が画面下部に表示される
 5. 「リセット」ボタンでゲームをリセット
 
+## CI/CD
+
+このプロジェクトは GitHub Actions を使用してAzureインフラへの自動デプロイを行います。
+
+- **デプロイ先**: Azure Container Apps
+- **コンテナレジストリ**: Azure Container Registry
+- **トリガー**: `main` ブランチへのプッシュまたはプルリクエスト
+
+### セットアップ
+
+Azure デプロイのセットアップについては [Azure CI/CD セットアップガイド](docs/AZURE_SETUP.md) を参照してください。
+
 ## ライセンス
 
 ISC
